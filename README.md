@@ -44,6 +44,85 @@ The project contains two routing paths:
 1. **CLI routing** uses the custom `Graph` class and Dijkstra implementation in `dijkstra.py`.
 2. **API routing** uses an OSMnx/NetworkX pedestrian graph representing the Georgia Tech campus.
 
+
+## Algorithms & Mathematics
+
+### Shortest-Path Routing
+
+The routing problem is modeled as a weighted graph
+
+$$
+G = (V, E)
+$$
+
+where each vertex \(v \in V\) represents a point in the pedestrian network and each edge \(e \in E\) represents a walkable connection. Edge weights correspond to physical distance in meters.
+
+The custom routing implementation uses **Dijkstra's algorithm**. For an edge from \(u\) to \(v\) with weight \(w(u,v)\), the relaxation step is:
+
+$$
+d(v) = \min\left(d(v),\ d(u) + w(u,v)\right)
+$$
+
+where \(d(v)\) is the shortest currently known distance from the source to vertex \(v\).
+
+A binary min-heap is used as the priority queue, giving a time complexity of approximately
+
+$$
+O((|V| + |E|)\log |V|)
+$$
+
+for the adjacency-list representation.
+
+### Geographic Distance
+
+Before a route can be calculated, an arbitrary latitude/longitude location must be mapped to the nearest node in the pedestrian graph.
+
+Because the graph is stored in geographic coordinates, the engine computes great-circle distance using the **Haversine formula**:
+
+$$
+a =
+\sin^2\left(\frac{\Delta\phi}{2}\right)
++
+\cos(\phi_1)\cos(\phi_2)
+\sin^2\left(\frac{\Delta\lambda}{2}\right)
+$$
+
+$$
+d =
+2R\arcsin(\sqrt{a})
+$$
+
+where:
+
+- \(\phi_1,\phi_2\) are the two latitudes in radians
+- \(\Delta\phi\) is the difference in latitude
+- \(\Delta\lambda\) is the difference in longitude
+- \(R = 6{,}371{,}000\text{ m}\) is the Earth's approximate mean radius
+
+The engine evaluates this distance against graph nodes and selects
+
+$$
+v^* = \arg\min_{v \in V} d(p,v)
+$$
+
+where \(p\) is the requested geographic position.
+
+### Walking-Time Estimation
+
+After computing the route distance, estimated walking time is calculated using
+
+$$
+t = \frac{d}{v}
+$$
+
+with an assumed walking speed of
+
+$$
+v = 1.3\text{ m/s}.
+$$
+
+The API converts the resulting time from seconds to minutes.
+
 ## Custom Dijkstra Implementation
 
 `dijkstra.py` implements Dijkstra's shortest-path algorithm using an adjacency-list graph representation and Python's `heapq` priority queue.
