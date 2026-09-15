@@ -3,7 +3,6 @@ Pedestrian routing over Georgia Tech's OpenStreetMap network, powered by a custo
 
 --- 
 Overview → what it does and why you built it
-
 Architecture → OSM → graph → routing engine → CLI/FastAPI
 
 Features → shortest path, aliases, coordinates, estimates, GeoJSON, caching
