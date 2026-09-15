@@ -63,7 +63,7 @@ $$
 d(v) = \min\left(d(v),\ d(u) + w(u,v)\right)
 $$
 
-where $\(d(v)\)$ is the shortest currently known distance from the source to vertex \(v\).
+where $\(d(v)\)$ is the shortest currently known distance from the source to vertex $\(v\)$.
 
 A binary min-heap is used as the priority queue, giving a time complexity of approximately
 
@@ -94,10 +94,10 @@ $$
 
 where:
 
-- \(\phi_1,\phi_2\) are the two latitudes in radians
-- \(\Delta\phi\) is the difference in latitude
-- \(\Delta\lambda\) is the difference in longitude
-- \(R = 6{,}371{,}000\text{ m}\) is the Earth's approximate mean radius
+- $\(\phi_1,\phi_2\)$ are the two latitudes in radians
+- $\(\Delta\phi\)$ is the difference in latitude
+- $\(\Delta\lambda\)$ is the difference in longitude
+- $\(R = 6{,}371{,}000\text{ m}\)$ is the Earth's approximate mean radius
 
 The engine evaluates this distance against graph nodes and selects
 
@@ -105,7 +105,7 @@ $$
 v^* = \arg\min_{v \in V} d(p,v)
 $$
 
-where \(p\) is the requested geographic position.
+where $\(p\)$ is the requested geographic position.
 
 ### Walking-Time Estimation
 
