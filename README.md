@@ -55,15 +55,15 @@ $$
 G = (V, E)
 $$
 
-where each vertex \(v \in V\) represents a point in the pedestrian network and each edge \(e \in E\) represents a walkable connection. Edge weights correspond to physical distance in meters.
+where each vertex $\(v \in V\)$ represents a point in the pedestrian network and each edge $\(e \in E\)$ represents a walkable connection. Edge weights correspond to physical distance in meters.
 
-The custom routing implementation uses **Dijkstra's algorithm**. For an edge from \(u\) to \(v\) with weight \(w(u,v)\), the relaxation step is:
+The custom routing implementation uses **Dijkstra's algorithm**. For an edge from $\(u\)$ to $\(v\)$ with weight $\(w(u,v)\)$, the relaxation step is:
 
 $$
 d(v) = \min\left(d(v),\ d(u) + w(u,v)\right)
 $$
 
-where \(d(v)\) is the shortest currently known distance from the source to vertex \(v\).
+where $\(d(v)\)$ is the shortest currently known distance from the source to vertex \(v\).
 
 A binary min-heap is used as the priority queue, giving a time complexity of approximately
 
