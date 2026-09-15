@@ -292,6 +292,7 @@ Downloading and constructing the campus network on every startup would add unnec
 - Add configurable walking speeds
 - Build an interactive map frontend using the returned route geometry
 - Add automated tests and routing benchmarks
+- Scale this and turn it into a mobile app or something
 
 ## Tech Stack
 
