@@ -1,8 +1,9 @@
 # Campus Route Engine
 Pedestrian routing over Georgia Tech's OpenStreetMap network, powered by a custom Dijkstra implementation and exposed through CLI and REST interfaces.
 
---- 
+
 Overview → what it does and why you built it
+
 Architecture → OSM → graph → routing engine → CLI/FastAPI
 
 Features → shortest path, aliases, coordinates, estimates, GeoJSON, caching
@@ -23,4 +24,4 @@ Technical Decisions → why OSMnx/NetworkX/FastAPI/caching
 
 Future Improvements → A*, accessibility-aware routing, live closures, etc.
 
----
+
